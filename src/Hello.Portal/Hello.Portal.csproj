@@ -5,7 +5,11 @@
     <RuntimeIdentifiers>win10-x64;osx.10.10-x64;linuxmint.18-x64;ol.7.2-x64;opensuse.42.1-x64;fedora.24-x64;debian.8-x64;centos.7-x64;ubuntu.16.04-x64;rhel.7-x64;</RuntimeIdentifiers>
     <AssemblyName>hello</AssemblyName>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+    <VersionPrefix Condition="'$(VersionPrefix)' == ''">1.0.$(BuildNumber)</VersionPrefix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''">preview</VersionSuffix>
+  </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
