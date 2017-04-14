@@ -3,11 +3,11 @@ setlocal
 
 if not defined VisualStudioVersion (
     if defined VS150COMNTOOLS (
-        call "%VS150COMNTOOLS%\VsDevCmd.bat"
+        call "%VS150COMNTOOLS%VsDevCmd.bat"
         goto :Run
     )
     if defined VS140COMNTOOLS (
-        call "%VS140COMNTOOLS%\VsDevCmd.bat"
+        call "%VS140COMNTOOLS%VsDevCmd.bat"
         goto :Run
     )
     echo Error: Visual Studio 2015 or higher is required.
