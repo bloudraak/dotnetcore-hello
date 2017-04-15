@@ -53,7 +53,7 @@ if not exist %~dp0dist (
 )
 
 pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\
-for /f "delims=" %%i in ('dir /ad/s/b') do echo %%i
+for /f "delims=" %%i in ('dir /ad/b') do echo %%i
 popd 
 
 pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\win10-x64\publish
