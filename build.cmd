@@ -13,8 +13,6 @@ if not defined VisualStudioVersion (
     exit /b 1
 )
 
-
-
 :Run
 
 set compress="C:\Program Files\7-Zip\7z.exe"
