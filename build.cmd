@@ -14,8 +14,8 @@ if [%VersionPrefix%]==[] set VersionPrefix=%VERSION%
 if [%VersionSuffix%]==[] set VersionSuffix=%BRANCH%
 
 REM msbuild %~dp0Hello.sln /t:Clean 
-REM msbuild %~dp0Hello.sln /t:Restore 
-REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win10-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
+msbuild %~dp0Hello.sln /t:Restore 
+msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win10-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win7-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win7-x86 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win81-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
