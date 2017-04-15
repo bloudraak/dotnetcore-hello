@@ -1,23 +1,7 @@
 @if "%_echo%" neq "on" echo off
 setlocal
 
-if not defined VisualStudioVersion (
-    if defined VS150COMNTOOLS (
-        echo "Visual Studio 2017 detected"
-        pushd "%VS150COMNTOOLS%"
-        call "%VS150COMNTOOLS%\VsDevCmd.bat"
-        popd
-        goto :Run
-    ) else if defined VS140COMNTOOLS (
-        echo "Visual Studio 2015 detected"
-        pushd "%VS140COMNTOOLS%"
-        call "%VS140COMNTOOLS%\vsvars32.bat"
-        popd
-        goto :Run
-    )
-    echo Error: Visual Studio 2015 or higher is required.
-    exit /b 1
-)
+call "%VS150COMNTOOLS%\VsDevCmd.bat"
 
 :Run
 
