@@ -1,0 +1,14 @@
+[Unit]
+Description=Hello
+
+[Service]
+WorkingDirectory=/var/aspnetcore/hellomvc
+ExecStart=/usr/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
+Restart=always
+RestartSec=10                                         
+SyslogIdentifier=dotnet-example
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production 
+
+[Install]
+WantedBy=multi-user.target
