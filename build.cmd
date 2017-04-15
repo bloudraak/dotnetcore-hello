@@ -6,7 +6,7 @@ if not defined VisualStudioVersion (
         call "%VS150COMNTOOLS%\VsDevCmd.bat"
         goto :Run
     ) else if defined VS140COMNTOOLS (
-        call "%VS140COMNTOOLS%\VsDevCmd.bat"
+        call "%VS140COMNTOOLS%\vsvars32.bat"
         goto :Run
     )
     echo Error: Visual Studio 2015 or higher is required.
