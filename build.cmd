@@ -59,7 +59,7 @@ for /f "delims=" %%i in ('dir /ad/b') do (
     echo %%i | findstr /C:"win" 1>nul
 
     if errorlevel 1 (
-        %compress% a -ttar -so hello-%VERSION%-%%i.tar . | %compress% a -si hello-%VERSION%-%%i.tar.gz    
+        %compress% a -ttar -so hello-%VERSION%-%%i.tar . | %compress% a -si %~dp0dist\hello-%VERSION%-%%i.tar.gz    
     ) else (
         %compress% a -tzip %~dp0dist\hello-%VERSION%-%%i.zip .
     )
