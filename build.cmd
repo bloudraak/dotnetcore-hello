@@ -21,7 +21,7 @@ REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentif
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=win81-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%  
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.0-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.1-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
-REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.2-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
+msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.2-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.3-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=rhel.7.4-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=ubuntu.14.04-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% 
@@ -46,11 +46,15 @@ REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentif
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=linuxmint.18-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.10-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.11-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
-REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.12-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
+msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.12-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
 
 if not exist %~dp0dist (
     mkdir %~dp0dist 
 )
+
+pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\
+for /f "delims=" %%i in ('dir /ad/s/b') do echo %%i
+popd 
 
 pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\win10-x64\publish
 %compress% a -tzip %~dp0dist\hello-%VERSION%-win10-x64.zip .
