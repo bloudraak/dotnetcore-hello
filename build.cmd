@@ -3,9 +3,11 @@ setlocal
 
 if not defined VisualStudioVersion (
     if defined VS150COMNTOOLS (
+        echo "Visual Studio 2017 detected"
         call "%VS150COMNTOOLS%\VsDevCmd.bat"
         goto :Run
     ) else if defined VS140COMNTOOLS (
+        echo "Visual Studio 2015 detected"
         call "%VS140COMNTOOLS%\vsvars32.bat"
         goto :Run
     )
