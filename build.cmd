@@ -61,6 +61,6 @@ for /f "delims=" %%i in ('dir /ad/b') do (
 
 popd 
 
-pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\win10-x64\publish
-%compress% a -tzip %~dp0dist\hello-%VERSION%-win10-x64.zip .
-popd
+REM pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\win10-x64\publish
+REM %compress% a -tzip %~dp0dist\hello-%VERSION%-win10-x64.zip .
+REM popd
