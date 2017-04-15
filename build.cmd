@@ -55,7 +55,14 @@ if not exist %~dp0dist (
 pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\
 for /f "delims=" %%i in ('dir /ad/b') do ( 
     pushd %~dp0\src\Hello.Portal\bin\Release\netcoreapp1.1\%%i\publish
-    %compress% a -tzip %~dp0dist\hello-%VERSION%-%%i.zip .
+
+    echo %%i | findstr /C:"win" 1>nul
+
+    if errorlevel 1 (
+        %compress% a -ttar -so hello-%VERSION%-%%i.tar . | %compress% a -si hello-%VERSION%-%%i.tar.gz    
+    ) else (
+        %compress% a -tzip %~dp0dist\hello-%VERSION%-%%i.zip .
+    )
     popd
 )
 
