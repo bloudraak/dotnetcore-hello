@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Hello" Language="1033"  Version="1.0.0.0" Manufacturer="Werner Strydom" UpgradeCode="E6487C23-5748-454F-9059-70D4DF358D65">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+    <UIRef Id="WixUI_Minimal"/>
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <FeatureRef Id="HelloPortalFeature" />
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="Hello">
+          <Directory Id="HELLOPORTALFOLDER" Name="Portal" />
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="CompanyStartMenuFolder" Name="Phaka" />
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

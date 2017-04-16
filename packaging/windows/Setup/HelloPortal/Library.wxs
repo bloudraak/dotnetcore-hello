@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Directory Id="HelloPortalComponentsDirectory" Name="Hello" />
+    </DirectoryRef>
+
+    <ComponentGroup Id="HelloServerComponents" Directory="INSTALLFOLDER">
+      <Component Id="HelloServerShortcut" Guid="{DAFF0A58-F46B-4143-8CE4-840968286630}" Win64="yes">
+        <Shortcut Id="HelloServerApplicationShortcut"
+					  Name="Hello Server"
+					  Description="Runs Hello Server"
+					  Target="[HELLOPORTALFOLDER]Hello.exe"
+					  Directory="CompanyStartMenuFolder"/>
+        <RemoveFolder Id="RemoveHelloApplicationShortcut" Directory="CompanyStartMenuFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Phaka\Hello" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+
+    <Feature Id="HelloPortalFeature">
+      <ComponentGroupRef Id="HelloPortalComponentGroup" />
+      <ComponentGroupRef Id="HelloServerComponents" />
+    </Feature>
+	</Fragment>
+</Wix>

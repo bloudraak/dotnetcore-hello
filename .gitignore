@@ -253,3 +253,6 @@ paket-files/
 
 # dist
 dist/
+/packaging/windows/.nuget
+*.exe
+/packaging/windows/Setup/HelloPortal/Components.wxs

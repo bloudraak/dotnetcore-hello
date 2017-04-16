@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.10</ProductVersion>
+    <ProjectGuid>f57a6afd-22f2-438c-bef0-929cc18ef6fc</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>HelloPortal</OutputName>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug;HelloPortalDir=S:\Hello\src\Hello.Portal\bin\Debug\netcoreapp1.1\win10-x64\publish</DefineConstants>
+    <LibAdditionalOptions>-bf</LibAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>HelloPortalDir=S:\Hello\src\Hello.Portal\bin\Release\netcoreapp1.1\win10-x64\publish</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Components.wxs" />
+    <Compile Include="Library.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HeatTransform.xslt" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Error Text="The WiX Toolset v3 build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+  </Target>
+  <Target Name="BeforeBuild">
+    <HeatDirectory ToolPath="$(WixToolPath)" Directory="$(MSBuildThisFileDirectory)..\..\..\..\src\Hello.Portal\bin\$(Configuration)\netcoreapp1.1\win10-x64\publish" Transforms="HeatTransform.xslt" ComponentGroupName="HelloPortalComponentGroup" DirectoryRefId="HELLOPORTALFOLDER" GenerateGuidsNow="True" SuppressFragments="True" SuppressRootDirectory="True" SuppressCom="True" SuppressRegistry="True" SuppressUniqueIds="False" PreProcessorVariable="var.HelloPortalDir" OutputFile="Components.wxs" />
+  </Target>
+</Project>
