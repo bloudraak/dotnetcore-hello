@@ -2,10 +2,10 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="Hello" Language="1033"  Version="1.0.0.0" Manufacturer="Werner Strydom" UpgradeCode="E6487C23-5748-454F-9059-70D4DF358D65">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
-    <UIRef Id="WixUI_Minimal"/>
+    <UIRef Id="WixUI_Mondo"/>
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf"/>
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
-
     <FeatureRef Id="HelloPortalFeature" />
   </Product>
 
