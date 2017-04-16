@@ -48,7 +48,6 @@ REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentif
 REM msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.11-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
 msbuild %~dp0Hello.sln /t:Publish /m /p:Configuration=Release;RuntimeIdentifier=osx.10.12-x64 /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix%
 
-
 REM
 REM Archive the packages
 REM
